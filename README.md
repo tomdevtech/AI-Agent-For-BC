@@ -1,6 +1,6 @@
 # 🤖 AI-Agent-For-BC
 
-This project demonstrates how to integrate various AI services—such as **GitHub Copilot**, **Ollama**, and **OpenRouter**—into Microsoft Dynamics 365 Business Central using AL interfaces.
+This project demonstrates how to integrate various AI services—such as **GitHub Copilot**, **Ollama**, and **OpenRouter** into Microsoft Dynamics 365 Business Central using AL interfaces.
 
 ## 🚀 Project Overview
 
