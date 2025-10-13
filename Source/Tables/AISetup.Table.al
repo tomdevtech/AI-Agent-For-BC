@@ -22,28 +22,33 @@ table 50100 "AI Setup"
             Caption = 'AI Implementation';
             ToolTip = 'Specifies the AI implementation to be used.';
         }
-        field(4; "Username"; Text[100])
+        field(4; Model; Text[100])
+        {
+            Caption = 'Model';
+            ToolTip = 'Specifies the model to be used for the AI implementation.';
+        }
+        field(5; "Username"; Text[100])
         {
             Caption = 'Username';
             ToolTip = 'Specifies the username for the AI implementation.';
         }
-        field(5; "Password"; Text[100])
+        field(6; "Password"; Text[100])
         {
             Caption = 'Password';
             ToolTip = 'Specifies the password for the AI implementation.';
             MaskType = Concealed;
         }
-        field(6; "API Key"; Text[250])
+        field(7; "API Key"; Text[250])
         {
             Caption = 'API Key';
             ToolTip = 'Specifies the API key for the AI implementation.';
         }
-        field(7; "System Role Prompt"; Text[1024])
+        field(8; "System Role Prompt"; Text[1024])
         {
             Caption = 'System Role Prompt';
             ToolTip = 'Specifies the system role prompt for the AI implementation.';
         }
-        field(8; Status; Enum "AI Agent Status")
+        field(9; Status; Enum "AI Agent Status")
         {
             Caption = 'Status';
             ToolTip = 'Specifies the status of the AI setup.';

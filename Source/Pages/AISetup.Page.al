@@ -20,6 +20,9 @@ page 50100 "AI Setup"
                 field("AI Implementation"; Rec."AI Implementation")
                 {
                 }
+                field(Model; Rec.Model)
+                {
+                }
                 field("Username"; Rec."Username")
                 {
                 }
