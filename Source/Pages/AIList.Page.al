@@ -13,19 +13,15 @@ page 50101 "AI Setup List"
             {
                 field(Code; Rec.Code)
                 {
-                    TableRelation = "AI Setup".Code;
                 }
                 field(Description; Rec.Description)
                 {
-                    Editable = false;
                 }
                 field("AI Implementation"; Rec."AI Implementation")
                 {
-                    Editable = false;
                 }
                 field(Status; Rec.Status)
                 {
-                    Editable = false;
                 }
             }
         }

@@ -14,13 +14,17 @@ table 50101 "AI List Entries"
         {
             Caption = 'Description';
             ToolTip = 'Specifies the description of the AI setup.';
+            FieldClass = FlowField;
+            CalcFormula = lookup("AI Setup".Description where(Code = field(Code)));
             Editable = false;
-            TableRelation = "AI Setup".Description where(Code = field(Code));
         }
         field(3; "AI Implementation"; Enum "AI Implementation")
         {
             Caption = 'AI Implementation';
             ToolTip = 'Specifies the AI implementation to be used.';
+            FieldClass = FlowField;
+            CalcFormula = lookup("AI Setup"."AI Implementation" where(Code = field(Code)));
+            Editable = false;
         }
         field(4; Status; Enum "AI Agent Status")
         {

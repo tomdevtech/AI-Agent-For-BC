@@ -41,23 +41,4 @@ page 50100 "AI Setup"
             }
         }
     }
-
-    actions
-    {
-        area(Processing)
-        {
-            action("Set Status to Active")
-            {
-                Caption = 'Set Status to Active';
-                Image = Start;
-                Enabled = (Rec.Status = Rec.Status::"Not Activated");
-            }
-            action("Set Status to Not Activated")
-            {
-                Caption = 'Set Status to Not Activated';
-                Image = Start;
-                Enabled = (Rec.Status = Rec.Status::Active);
-            }
-        }
-    }
 }
