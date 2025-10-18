@@ -19,4 +19,14 @@ codeunit 50100 "Copilot Implementation" implements IAImplementation
     begin
         // Send request logic
     end;
+
+    procedure BuildRequest(): JsonObject
+    begin
+        // Build request logic
+    end;
+
+    procedure ProcessResponse(Response: JsonObject): Text
+    begin
+        // Process response logic
+    end;
 }
