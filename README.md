@@ -39,3 +39,4 @@ This project demonstrates how to integrate various AI services—such as **GitHu
 - [Ollama Documentation](https://ollama.com/docs)
 - [OpenRouter API Docs](https://openrouter.ai/docs)
 - [GitHub Copilot Information](https://github.com/features/copilot)
+- [Working with HTTPClient in BC](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/devenv-httpclient)
