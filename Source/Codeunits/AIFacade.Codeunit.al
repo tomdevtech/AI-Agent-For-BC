@@ -15,33 +15,37 @@ codeunit 50104 "AI Facade"
     /// <summary>
     /// Sets the system role prompt.
     /// </summary>
+    /// <param name="AISetup"></param>
     /// <param name="ImplementationType"></param>
     /// <param name="SystemRolePrompt"></param>
-    procedure SetSystemRolePrompt(ImplementationType: Enum "AI Implementation"; SystemRolePrompt: Text);
+    procedure SetSystemRolePrompt(AISetup: Record "AI Setup"; ImplementationType: Enum "AI Implementation"; SystemRolePrompt: Text);
     begin
-        GetImplementation(ImplementationType).SetSystemRolePrompt(SystemRolePrompt);
+        GetImplementation(ImplementationType).SetSystemRolePrompt(AISetup, SystemRolePrompt);
     end;
 
     /// <summary>
     /// Sends the request.
     /// </summary>
+    /// <param name="AISetup"></param>
     /// <param name="ImplementationType"></param>
     /// <param name="JsonRequest"></param>
     /// <returns></returns>
-    procedure SendRequest(ImplementationType: Enum "AI Implementation"; JsonRequest: JsonObject): JsonObject;
+    /// <returns></returns>
+    procedure SendRequest(AISetup: Record "AI Setup"; ImplementationType: Enum "AI Implementation"; JsonRequest: JsonObject): JsonObject;
     begin
-        exit(GetImplementation(ImplementationType).SendRequest(JsonRequest));
+        exit(GetImplementation(ImplementationType).SendRequest(AISetup, JsonRequest));
     end;
 
     /// <summary>
     /// Builds the request.
     /// </summary>
+    /// <param name="AISetup"></param>
     /// <param name="ImplementationType"></param>
     /// <param name="UserPrompt"></param>
     /// <returns></returns>
-    procedure BuildRequest(ImplementationType: Enum "AI Implementation"; UserPrompt: Text): JsonObject
+    procedure BuildRequest(AISetup: Record "AI Setup"; ImplementationType: Enum "AI Implementation"; UserPrompt: Text): JsonObject
     begin
-        exit(GetImplementation(ImplementationType).BuildRequest(UserPrompt));
+        exit(GetImplementation(ImplementationType).BuildRequest(AISetup, UserPrompt));
     end;
 
     /// <summary>

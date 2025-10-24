@@ -1,21 +1,22 @@
 interface IAImplementation
 {
     /// <summary>
-    /// Sets the system role prompt.
+    /// Sets the system role prompt for the setup.
     /// </summary>
+    /// <param name="AISetup"></param>
     /// <param name="SystemRolePrompt"></param>
-    procedure SetSystemRolePrompt(SystemRolePrompt: Text);
+    procedure SetSystemRolePrompt(var AISetup: Record "AI Setup"; SystemRolePrompt: Text);
 
     /// <summary>
     /// Sends the request.
     /// </summary>
-    procedure SendRequest(JsonRequest: JsonObject): JsonObject;
+    procedure SendRequest(AISetup: Record "AI Setup"; JsonRequest: JsonObject): JsonObject;
 
     /// <summary>
     /// Builds the request.
     /// </summary>
     /// <returns></returns>
-    procedure BuildRequest(UserPrompt: Text): JsonObject;
+    procedure BuildRequest(AISetup: Record "AI Setup"; UserPrompt: Text): JsonObject;
 
     /// <summary>
     /// Processes the response.

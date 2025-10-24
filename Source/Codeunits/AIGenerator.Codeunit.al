@@ -32,8 +32,8 @@ codeunit 50106 "AI Generator"
             Error('AI Setup %1 is not activated. Current status: %2', AISetupCode, AISetup.Status);
 
         // Generate response using AI Facade
-        JsonRequest := AIFacade.BuildRequest(AISetup."AI Implementation", UserInput);
-        JsonResponse := AIFacade.SendRequest(AISetup."AI Implementation", JsonRequest);
+        JsonRequest := AIFacade.BuildRequest(AISetup, AISetup."AI Implementation", UserInput);
+        JsonResponse := AIFacade.SendRequest(AISetup, AISetup."AI Implementation", JsonRequest);
         GeneratedText := AIFacade.ProcessResponse(AISetup."AI Implementation", JsonResponse);
 
         exit(GeneratedText);
