@@ -1,32 +1,22 @@
 codeunit 50100 "Copilot Implementation" implements IAImplementation
 {
-    procedure InitializeImplementation();
+    procedure SetSystemRolePrompt(SystemRolePrompt: Text)
     begin
-        // Initialization logic
+
     end;
 
-    procedure SetSystemRolePrompt(SystemRolePrompt: Text);
+    procedure SendRequest(JsonRequest: JsonObject): JsonObject
     begin
-        // Set system role prompt logic
+
     end;
 
-    procedure SetUserPrompt(UserPrompt: Text);
+    procedure BuildRequest(UserPrompt: Text): JsonObject
     begin
-        // Set user prompt logic
-    end;
 
-    procedure SendRequest();
-    begin
-        // Send request logic
-    end;
-
-    procedure BuildRequest(): JsonObject
-    begin
-        // Build request logic
     end;
 
     procedure ProcessResponse(Response: JsonObject): Text
     begin
-        // Process response logic
+
     end;
 }

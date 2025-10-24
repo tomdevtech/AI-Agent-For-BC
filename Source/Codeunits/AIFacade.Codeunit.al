@@ -13,15 +13,6 @@ codeunit 50104 "AI Facade"
     end;
 
     /// <summary>
-    /// Initializes the AI implementation.
-    /// </summary>
-    /// <param name="ImplementationType"></param>
-    procedure InitializeImplementation(ImplementationType: Enum "AI Implementation");
-    begin
-        GetImplementation(ImplementationType).InitializeImplementation();
-    end;
-
-    /// <summary>
     /// Sets the system role prompt.
     /// </summary>
     /// <param name="ImplementationType"></param>
@@ -32,32 +23,25 @@ codeunit 50104 "AI Facade"
     end;
 
     /// <summary>
-    /// Sets the user prompt.
-    /// </summary>
-    /// <param name="ImplementationType"></param>
-    /// <param name="UserPrompt"></param>
-    procedure SetUserPrompt(ImplementationType: Enum "AI Implementation"; UserPrompt: Text);
-    begin
-        GetImplementation(ImplementationType).SetUserPrompt(UserPrompt);
-    end;
-
-    /// <summary>
     /// Sends the request.
     /// </summary>
     /// <param name="ImplementationType"></param>
-    procedure SendRequest(ImplementationType: Enum "AI Implementation");
+    /// <param name="JsonRequest"></param>
+    /// <returns></returns>
+    procedure SendRequest(ImplementationType: Enum "AI Implementation"; JsonRequest: JsonObject): JsonObject;
     begin
-        GetImplementation(ImplementationType).SendRequest();
+        exit(GetImplementation(ImplementationType).SendRequest(JsonRequest));
     end;
 
     /// <summary>
     /// Builds the request.
     /// </summary>
     /// <param name="ImplementationType"></param>
+    /// <param name="UserPrompt"></param>
     /// <returns></returns>
-    procedure BuildRequest(ImplementationType: Enum "AI Implementation"): JsonObject
+    procedure BuildRequest(ImplementationType: Enum "AI Implementation"; UserPrompt: Text): JsonObject
     begin
-        exit(GetImplementation(ImplementationType).BuildRequest());
+        exit(GetImplementation(ImplementationType).BuildRequest(UserPrompt));
     end;
 
     /// <summary>

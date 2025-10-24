@@ -11,9 +11,9 @@ table 50102 "AI Prompt Storage"
             Caption = 'AI Setup';
             TableRelation = "AI Setup".Code;
         }
-        field(2; "User Input"; Text[250])
+        field(2; "Prompt"; Text[250])
         {
-            Caption = 'User Input';
+            Caption = 'Prompt';
         }
     }
 }

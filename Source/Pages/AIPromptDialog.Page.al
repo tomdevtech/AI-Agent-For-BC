@@ -10,33 +10,65 @@ page 50102 "AI Prompt Dialog"
     DelayedInsert = true;
     Editable = true;
 
-
-
     layout
     {
+        area(Prompt)
+        {
+            field("AI Setup"; Rec."AI Setup")
+            {
+                ApplicationArea = All;
+                Caption = 'AI Setup';
+                ToolTip = 'Select the AI setup to use for this prompt.';
+                TableRelation = "AI Setup".Code;
+            }
+            field("User Input"; Rec."Prompt")
+            {
+                ApplicationArea = All;
+                Caption = 'User Input';
+                ToolTip = 'Enter your prompt for the AI model.';
+                MultiLine = true;
+            }
+        }
         area(Content)
         {
-            group("AI Model")
+            field(Response; Rec."Prompt")
             {
-                Caption = 'AI Model';
-                field("AI Setup"; Rec."AI Setup")
-                {
-                    ApplicationArea = All;
-                    Caption = 'AI Setup';
-                    ToolTip = 'Select the AI setup to use for this prompt.';
-                    TableRelation = "AI Setup".Code;
-                }
+                ApplicationArea = All;
+                Caption = 'Response';
+                ToolTip = 'Displays the response from the AI model.';
+                MultiLine = true;
             }
-            group(Input)
+        }
+    }
+
+    actions
+    {
+        area(SystemActions)
+        {
+            systemaction(Generate)
             {
-                Caption = 'User Input';
-                field("User Input"; Rec."User Input")
-                {
-                    ApplicationArea = All;
-                    Caption = 'User Input';
-                    ToolTip = 'Enter your prompt for the AI model.';
-                    MultiLine = true;
-                }
+                Caption = 'Generate';
+                ToolTip = 'Generate content based on the provided prompt.';
+
+                trigger OnAction()
+                begin
+                    GenerateReponse();
+                end;
+            }
+            systemaction(OK)
+            {
+                Caption = 'Keep it';
+                ToolTip = 'Saves the response proposed by API AI Agent.';
+            }
+            systemaction(Cancel)
+            {
+                Caption = 'Discard it';
+                ToolTip = 'Discard the response proposed by API AI Agent.';
+            }
+            systemaction(Regenerate)
+            {
+                Caption = 'Regenerate';
+                ToolTip = 'Regenerate the response proposed by API AI Agent.';
             }
         }
     }
@@ -47,5 +79,13 @@ page 50102 "AI Prompt Dialog"
             Rec.Init();
             Rec.Insert();
         end;
+    end;
+
+    local procedure GenerateReponse()
+    var
+        AIGenerator: Codeunit "AI Generator";
+    begin
+        Rec.Prompt := AIGenerator.GenerateResponse(Rec."AI Setup", Rec.Prompt);
+        Rec.Modify();
     end;
 }

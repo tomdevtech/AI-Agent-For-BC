@@ -32,6 +32,9 @@ page 50100 "AI Setup"
                 field("API Key"; Rec."API Key")
                 {
                 }
+                field(URL; Rec.URL)
+                {
+                }
                 field("System Role Prompt"; Rec."System Role Prompt")
                 {
                 }

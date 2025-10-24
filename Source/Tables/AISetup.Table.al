@@ -36,7 +36,7 @@ table 50100 "AI Setup"
         {
             Caption = 'Password';
             ToolTip = 'Specifies the password for the AI implementation.';
-            MaskType = Concealed;
+            //MaskType = Concealed;
         }
         field(7; "API Key"; Text[250])
         {
@@ -54,6 +54,11 @@ table 50100 "AI Setup"
             ToolTip = 'Specifies the status of the AI setup.';
             Editable = false;
             InitValue = "Not Activated";
+        }
+        field(10; URL; Text[250])
+        {
+            Caption = 'URL';
+            ToolTip = 'Specifies the URL for the AI implementation.';
         }
     }
 
