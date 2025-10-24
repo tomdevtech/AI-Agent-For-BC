@@ -5,23 +5,19 @@ codeunit 50102 "OpenRouter Implementation" implements IAImplementation
     /// Sets the system role prompt.
     /// </summary>
     /// <param name="SystemRolePrompt"></param>
-    procedure SetSystemRolePrompt(SystemRolePrompt: Text)
-    var
-        AISetup: Record "AI Setup";
+    procedure SetSystemRolePrompt(var AISetup: Record "AI Setup"; SystemRolePrompt: Text)
     begin
-        AISetup.SetRange("AI Implementation", AISetup."AI Implementation"::OpenRouter);
-        if AISetup.FindFirst() then begin
-            AISetup."System Role Prompt" := SystemRolePrompt;
-            AISetup.Modify();
-        end;
+        AISetup."System Role Prompt" := SystemRolePrompt;
+        AISetup.Modify();
     end;
 
     /// <summary>
     /// Sends the request.
     /// </summary>
+    /// <param name="AISetup"></param>
     /// <param name="JsonRequest"></param>
     /// <returns></returns>
-    procedure SendRequest(JsonRequest: JsonObject): JsonObject
+    procedure SendRequest(AISetup: Record "AI Setup"; JsonRequest: JsonObject): JsonObject
     var
         HttpClient: HttpClient;
         HttpRequestMessage: HttpRequestMessage;
@@ -31,15 +27,9 @@ codeunit 50102 "OpenRouter Implementation" implements IAImplementation
         RequestText: Text;
         ResponseText: Text;
         ResponseObject: JsonObject;
-        AISetup: Record "AI Setup";
         HTTPHelper: Codeunit "HTTP Helper";
         APIKeyTxt: Label 'Bearer %1', Comment = '%1 = API Key';
     begin
-        // Get AI Setup for API configuration
-        AISetup.SetRange("AI Implementation", AISetup."AI Implementation"::OpenRouter);
-        if not AISetup.FindFirst() then
-            Error('OpenRouter AI Setup not found.');
-
         // Convert JSON request to text
         JsonRequest.WriteTo(RequestText);
 
@@ -75,18 +65,19 @@ codeunit 50102 "OpenRouter Implementation" implements IAImplementation
         exit(ResponseObject);
     end;
 
-    procedure BuildRequest(UserPrompt: Text): JsonObject
+    /// <summary>
+    /// Builds the request.
+    /// </summary>
+    /// <param name="AISetup"></param>
+    /// <param name="UserPrompt"></param>
+    /// <returns></returns>
+    procedure BuildRequest(AISetup: Record "AI Setup"; UserPrompt: Text): JsonObject
     var
         RequestObject: JsonObject;
         MessagesArray: JsonArray;
         SystemMessage: JsonObject;
         UserMessage: JsonObject;
-        AISetup: Record "AI Setup";
     begin
-        // Get AI Setup for model configuration
-        AISetup.SetRange("AI Implementation", AISetup."AI Implementation"::OpenRouter);
-        if AISetup.FindFirst() then;
-
         // Build the request object for OpenRouter API
         RequestObject.Add('model', AISetup.Model);
         RequestObject.Add('max_tokens', 1000);
@@ -109,6 +100,11 @@ codeunit 50102 "OpenRouter Implementation" implements IAImplementation
         exit(RequestObject);
     end;
 
+    /// <summary>
+    /// Processes the response.
+    /// </summary>
+    /// <param name="Response"></param>
+    /// <returns></returns>
     procedure ProcessResponse(Response: JsonObject): Text
     var
         ChoicesArray: JsonArray;
