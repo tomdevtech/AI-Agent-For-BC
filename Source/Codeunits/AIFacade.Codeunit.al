@@ -42,6 +42,7 @@ codeunit 50104 "AI Facade"
     /// <param name="AISetup"></param>
     /// <param name="ImplementationType"></param>
     /// <param name="UserPrompt"></param>
+    /// <param name="UserPrompt"></param>
     /// <returns></returns>
     procedure BuildRequest(AISetup: Record "AI Setup"; ImplementationType: Enum "AI Implementation"; UserPrompt: Text): JsonObject
     begin

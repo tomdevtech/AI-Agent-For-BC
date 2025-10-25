@@ -43,6 +43,17 @@ page 50101 "AI Setup List"
                     AISetupMgt.UpdateStatus(Rec.Code, Rec.Status);
                 end;
             }
+
+            action(OpenPromptPage)
+            {
+                Caption = 'Open Prompt Page';
+                Image = Comment;
+
+                trigger OnAction()
+                begin
+                    Page.Run(50102);
+                end;
+            }
         }
     }
 }
