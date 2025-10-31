@@ -36,7 +36,7 @@ table 50100 "AI Setup"
         {
             Caption = 'Password';
             ToolTip = 'Specifies the password for the AI implementation.';
-            //MaskType = Concealed;
+            MaskType = Concealed;
         }
         field(7; "API Key"; Text[250])
         {
